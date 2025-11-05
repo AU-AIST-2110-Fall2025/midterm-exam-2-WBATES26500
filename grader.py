@@ -15,7 +15,11 @@ def extract_data(raw_data):
     s_grades = []
 
     # ADD YOUR CODE HERE
-
+    for s_name in raw_data:
+        s_name = s_name.split(":")[1].split(":")[0]
+        s_names.append(s_name)
+    for s_grades in raw_data:
+        s_grades = int(s_grades)
     return s_names, s_grades
 
 def curve_grades(grades, by_amount):
@@ -26,7 +30,14 @@ def curve_grades(grades, by_amount):
     Return the list containing the curved grades (same list if modified, otherwise new).
     """
     # ADD YOUR CODE HERE
-
+    i = 0
+    while i < range(len(grades)):
+        updated_grades = by_amount[i] + 5
+        if curve_grades > 100:
+            curve_grades = 100
+            by_amount[i] = updated_grades
+        i += 1
+        return updated_grades
 
 def print_top_performers(names, grades):
     """
@@ -39,7 +50,11 @@ def print_top_performers(names, grades):
     Returns: None
     """
     # ADD YOUR CODE HERE
-
+    names = []
+    for i,names in enumerate(grades):
+            if names >= 95:
+                names.append(i)
+    return names
 
 def main():
 
